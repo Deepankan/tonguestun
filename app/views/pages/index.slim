@@ -1,0 +1,33 @@
+.container
+  .row
+    .main
+      h3
+        | Please
+        a.login[href="#"]
+          | Log In
+        |  , or
+        a.sign-up[href="#"]
+          |  Sign Up
+      .login-or
+        hr.hr-or
+      #sign-in
+        = form_tag sign_in_path do
+          .form-group
+            = label_tag :email
+            = text_field_tag :email, params[:email], class: 'form-control'
+          .form-group
+            = label_tag :password
+            = text_field_tag :password, params[:password], class: 'form-control'
+          .text-center = submit_tag "Sign in", class: "btn btn-large btn-primary"
+      #sign-up.hide
+        = form_tag sign_up_path do
+          .form-group
+            = label_tag :email
+            = text_field_tag :sign_up_email, params[:sign_up_email], class: 'form-control'
+          .form-group
+            = label_tag :password
+            = text_field_tag :sign_up_password, params[:sign_up_password], class: 'form-control'
+          .form-group
+            = label_tag :confirm_password
+            = text_field_tag :sign_up_confirm_password, params[:sign_up_confirm_password], class: 'form-control'
+          .text-center = submit_tag "Sign Up", class: "btn btn-large btn-primary"

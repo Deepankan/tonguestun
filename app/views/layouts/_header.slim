@@ -1,0 +1,5 @@
+.header
+  a.logo[href="#{root_path}"]
+    = session[:user]
+  .header-right
+    = link_to 'Sign Out', sign_out_path, class: 'active'

@@ -1,0 +1,25 @@
+.col-md-6.column[style="background-color:#aaa;"]
+  .form-block
+    h4.text-center Patient
+    = form_tag submit_patient_path, remote: true do
+      .form-group
+        = text_field_tag :name, params[:name], class: 'form-control', placeholder: 'Name'
+      .form-group
+        = text_field_tag :phone_number, params[:phone_number], class: 'form-control', placeholder: 'Phone Number'
+      .text-center
+        = submit_tag "Submit", class: "btn btn-large btn-primary btn-submit"
+.col-md-6.column[style="background-color:#bbb;"]
+  .form-block
+    h4.text-center Doctor
+    = form_tag submit_doctor_path, remote: true do
+      .form-group
+        = text_field_tag :name, params[:name], class: 'form-control', placeholder: 'Name'
+      .form-group
+        = text_field_tag :phone_number, params[:phone_number], class: 'form-control', placeholder: 'Phone Number'
+      .form-group
+        = text_field_tag :specialization, params[:specialization], class: 'form-control', placeholder: 'Specialization'
+      .text-center
+        = submit_tag "Submit", class: "btn btn-large btn-primary btn-submit"
+#appointement_div
+  = include_gon(:init => true)
+  = render partial: 'pages/appointment_lists', locals: { doctors: @doctors, patients: @patients, appointments: @appointments }

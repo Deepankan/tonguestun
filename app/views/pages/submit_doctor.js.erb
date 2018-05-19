@@ -1,0 +1,11 @@
+if ("<%= @response['status'] %>" == '200'){
+  $('.form-control').val('')
+  $('.lead').text('Data Added Successfully!')
+  $('.modal-body .img').addClass('tick-image')
+} else {
+  $('.lead').text('Something went wrong. Please try again')
+  $('.modal-body .img').addClass('cross-image')
+}
+$('#appointement_div').html('<%= escape_javascript(raw(render partial: 'pages/appointment_lists', locals: { doctors: @response["doctor_lists"], patients: @response["patient_lists"], appointments: @response["appointments"] })) %>');
+$('#myModal').modal('show');
+$('#myModal').removeClass('hide');

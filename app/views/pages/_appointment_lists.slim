@@ -1,0 +1,30 @@
+.col-md-6.column[style="background-color:#ccc;"]
+  .form-block
+    h4.text-center Appointment
+    = form_tag submit_appointment_path, remote: true do
+      .form-group
+        = select_tag :doctor_id, options_for_select(doctors.collect {|p| [ p['doctor_name'], p['doctor_id'] ] }), class: 'form-control', prompt: 'Select Doctor'
+      .form-group
+        = select_tag :patient_id, options_for_select(patients.collect {|p| [ p['patient_name'], p['patient_id'] ] }), class: 'form-control', prompt: 'Select Patient'
+      .form-group
+        = text_field_tag :disease, params[:disease], class: 'form-control', placeholder: 'Disease'
+      .text-center
+        = submit_tag "Submit", class: "btn btn-large btn-primary btn-submit"
+.col-md-6.column[style="background-color:#ddd;"]
+  h4.text-center View Appointment
+
+  table#example.table.table-striped.table-bordered
+    thead
+      tr
+        th
+          | Doctor Name
+        th
+          | Patient Name
+        th
+          | Diseases
+    tbody
+      - appointments.each do |appointment|
+        tr
+          td = appointment['doctor_name']
+          td = appointment['patient_name']
+          td = appointment['disease']
